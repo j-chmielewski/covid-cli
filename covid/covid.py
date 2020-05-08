@@ -8,7 +8,7 @@ import requests
 import csv
 from colorama import Fore, Style
 
-DATA_URL_TEMPLATE = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-{}.csv'
+DATA_URL_TEMPLATE = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_{}_global.csv'
 COUNTRY_COLUMN = 'Country/Region'
 SPACING = 10
 
@@ -37,7 +37,7 @@ if __name__ == '__main__':
         csv.reader(
             StringIO(requests.get(DATA_URL_TEMPLATE.format(dataset)).text), delimiter=','
         )
-        for dataset in ['Confirmed', 'Deaths', 'Recovered']
+        for dataset in ['confirmed', 'deaths', 'recovered']
     ]
     confirmed_columns, deaths_columns, recovered_columns = next(confirmed), next(deaths), next(recovered)
     confirmed_country_index, deaths_country_index, recovered_country_index = (
